@@ -12,7 +12,7 @@ public class BookManager : MonoBehaviour
 
     [Header("Exit Door")]
     public GameObject exitDoor;
-    private ExitDoor exitDoorScript;
+    private ExitDoor2 exitDoorScript; // CHANGED FROM ExitDoor to ExitDoor2
 
     void Start()
     {
@@ -20,7 +20,12 @@ public class BookManager : MonoBehaviour
 
         if (exitDoor != null)
         {
-            exitDoorScript = exitDoor.GetComponent<ExitDoor>();
+            exitDoorScript = exitDoor.GetComponent<ExitDoor2>(); // CHANGED to ExitDoor2
+
+            if (exitDoorScript == null)
+            {
+                Debug.LogError("❌ ExitDoor2 script not found on door!");
+            }
         }
     }
 

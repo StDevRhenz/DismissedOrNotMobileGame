@@ -28,7 +28,7 @@ public class CollectionManager : MonoBehaviour
                 Debug.LogWarning("ExitDoor object doesn't have ExitDoor script attached!");
             }
         }
-        // Don't show error if no door assigned - Might be Valid for Some levels
+        // Don't show error if no door assigned - might be valid for some levels
     }
 
     public void CollectKeycard()
