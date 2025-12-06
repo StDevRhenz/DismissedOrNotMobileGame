@@ -31,7 +31,7 @@ public class NPCNavFollow : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerDetected = true;
-            agent.speed = chaseSpeed; // bibilis
+            agent.speed = chaseSpeed;
         }
     }
 
@@ -40,7 +40,7 @@ public class NPCNavFollow : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerDetected = false;
-            agent.speed = normalSpeed; // balik sa normal
+            agent.speed = normalSpeed;
         }
     }
 }

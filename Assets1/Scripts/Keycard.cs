@@ -17,27 +17,21 @@ public class Keycard : MonoBehaviour
 
     void Start()
     {
-        // Store the starting position for bobbing effects.
         startPosition = transform.position;
     }
 
     void Update()
     {
-        // Rotate the keycard continuously
         transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
 
-        // Bob up and down
         float newY = startPosition.y + Mathf.Sin(Time.time * bobSpeed) * bobHeight;
         transform.position = new Vector3(transform.position.x, newY, transform.position.z);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        // Check if the player collided with this keycard
-        // Works with characterController which uses the root GameObject
         if (other.CompareTag("Player") || other.GetComponent<CharacterController>() != null)
         {
-            // Show dialogue on first keycard
             if (!firstKeycardCollected)
             {
                 firstKeycardCollected = true;
@@ -52,20 +46,17 @@ public class Keycard : MonoBehaviour
                 }
             }
 
-            // Find the collectionManager and add the keycard
             CollectionManager manager = FindObjectOfType<CollectionManager>();
             if (manager != null)
             {
                 manager.CollectKeycard();
             }
 
-            // Play collection sound if assigned
             if (collectSound != null)
             {
                 AudioSource.PlayClipAtPoint(collectSound, transform.position);
             }
 
-            // Destroy the keycard
             Destroy(gameObject);
         }
     }

@@ -12,7 +12,7 @@ public class KeyCollectionManager : MonoBehaviour
 
     [Header("Exit Door")]
     public GameObject exitDoor;
-    private ExitDoor3 exitDoorScript;  // <- change here
+    private ExitDoor3 exitDoorScript;
 
     void Start()
     {
@@ -20,7 +20,7 @@ public class KeyCollectionManager : MonoBehaviour
 
         if (exitDoor != null)
         {
-            exitDoorScript = exitDoor.GetComponent<ExitDoor3>();  // <- change here
+            exitDoorScript = exitDoor.GetComponent<ExitDoor3>();
 
             if (exitDoorScript == null)
                 Debug.LogWarning("ExitDoor3 script not found on the assigned exit door object!");

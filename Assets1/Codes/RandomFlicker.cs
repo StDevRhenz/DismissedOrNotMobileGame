@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class RandomFlicker : MonoBehaviour
 {
-    public Light myLight;             // Drag your Light dito
-    public float minIntensity = 0f;   // pinaka-dilaw kapag flicker
-    public float maxIntensity = 1f;   // pinaka-liwanag
-    public float minTime = 0.05f;     // pinakamabilis na flicker interval
-    public float maxTime = 0.3f;      // pinakamabagal na flicker interval
+    public Light myLight;
+    public float minIntensity = 0f;
+    public float maxIntensity = 1f;
+    public float minTime = 0.05f;
+    public float maxTime = 0.3f;
 
     private float timer;
 

@@ -3,7 +3,7 @@ using UnityEngine;
 public class KeyPickup : MonoBehaviour
 {
     public KeyCollectionManager manager;
-    public GameObject pressEUI;  // UI text for "Press E"
+    public GameObject pressEUI;
 
     private bool isPlayerInside = false;
 
