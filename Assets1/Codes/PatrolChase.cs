@@ -25,12 +25,14 @@ public class PatrolChase : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
+        // Chase mode pag pumasok si player sa detection radius
         if (distanceToPlayer <= detectionRange)
         {
             agent.SetDestination(player.position);
             return;
         }
 
+        // Patrol loop kapag walang target sa range
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
             GoToNextPoint();

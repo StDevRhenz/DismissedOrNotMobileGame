@@ -34,6 +34,7 @@ public class FP_CharacterController : MonoBehaviour
 
     void Update()
     {
+        // Hold Z kung kailangan i-free ang cursor para mag UI
         if (Input.GetKey(KeyCode.Z))
         {
             Cursor.lockState = CursorLockMode.None;
@@ -66,6 +67,7 @@ public class FP_CharacterController : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
         if (canMove)
         {
+            // FPS look clamp para di mag 360 ang ulo vertically
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);

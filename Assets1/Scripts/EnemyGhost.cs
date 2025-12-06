@@ -70,6 +70,7 @@ public class EnemyGhost : MonoBehaviour
 
         if (distanceToPlayer <= detectionRange && !hasDetectedPlayer)
         {
+            // Flag na once nakita ka, magiging hunter mode na siya
             hasDetectedPlayer = true;
 
             if (!hasShownDialogue)
@@ -89,10 +90,12 @@ public class EnemyGhost : MonoBehaviour
 
         if (hasDetectedPlayer && !playerIsSafe)
         {
+            // Aggro state: habol hanggang makapasok si player sa safe room
             ChasePlayer();
         }
         else if (!hasDetectedPlayer || playerIsSafe)
         {
+            // Patrol fallback kapag hindi ka pa na-spot o nasa safe zone ka
             Patrol();
 
             if (playerIsSafe)
@@ -103,6 +106,7 @@ public class EnemyGhost : MonoBehaviour
 
         if (distanceToPlayer <= attackRange && attackCooldown <= 0 && !playerIsSafe)
         {
+            // Swing lang kapag nasa range at ready na ang cooldown
             AttackPlayer();
         }
     }

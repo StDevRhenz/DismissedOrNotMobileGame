@@ -34,6 +34,7 @@ public class KeyCollectionManager : MonoBehaviour
 
         Debug.Log("Key collected! " + collectedKeys + "/" + totalKeys);
 
+        // Kapag kumpleto na quota, tawag agad ng unlock
         if (collectedKeys >= totalKeys)
         {
             UnlockExit();

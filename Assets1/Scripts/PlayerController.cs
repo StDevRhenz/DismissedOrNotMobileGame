@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
         HandleMovement();
         HandleMouseLook();
 
+        // ESC shortcut para ibalik ang cursor kapag kailangan mag-menu
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.lockState = CursorLockMode.None;
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour
         characterController.Move(move * currentSpeed * Time.deltaTime);
         if (characterController.isGrounded)
         {
-            verticalVelocity = -2f;
+            verticalVelocity = -2f; // maliit na push down para laging grounded
         }
         else
         {

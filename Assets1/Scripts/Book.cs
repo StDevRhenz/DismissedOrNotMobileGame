@@ -32,7 +32,7 @@ public class Book : MonoBehaviour
     {
         if (other.CompareTag("Player") || other.GetComponent<CharacterController>() != null)
         {
-            // Show Dialogue on first book
+            // First pickup lang magti-trigger ng dialogue para di spam
             if (!firstBookCollected)
             {
                 firstBookCollected = true;
