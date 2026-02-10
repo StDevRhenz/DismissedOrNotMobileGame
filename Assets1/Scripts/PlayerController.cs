@@ -19,14 +19,11 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        // Get the CharacterController component
         characterController = GetComponent<CharacterController>();
 
-        // Lock and hide the cursor for FPS controls
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        // If camera wasn't assigned, try to find it
         if (playerCamera == null)
         {
             playerCamera = GetComponentInChildren<Camera>().transform;
@@ -38,7 +35,7 @@ public class PlayerController : MonoBehaviour
         HandleMovement();
         HandleMouseLook();
 
-        // Press ESC to unlock cursor (for testing)
+        // ESC shortcut para ibalik ang cursor kapag kailangan mag-menu
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.lockState = CursorLockMode.None;
@@ -48,43 +45,29 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
-        // Get input from WASD or Arrow Keys
-        float moveX = Input.GetAxis("Horizontal"); // A/D or Left/Right
-        float moveZ = Input.GetAxis("Vertical");   // W/S or Up/Down
-
-        // Calculate movement direction relative to where player is facing
+        float moveX = Input.GetAxis("Horizontal");
+        float moveZ = Input.GetAxis("Vertical");
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
-
-        // Check if sprinting (Left Shift)
         float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : moveSpeed;
-
-        // Apply movement
         characterController.Move(move * currentSpeed * Time.deltaTime);
-
-        // Apply gravity
         if (characterController.isGrounded)
         {
-            verticalVelocity = -2f; // Small downward force to keep grounded
+            verticalVelocity = -2f; // maliit na push down para laging grounded
         }
         else
         {
             verticalVelocity += gravity * Time.deltaTime;
         }
-
-        // Apply vertical velocity (gravity/falling)
         characterController.Move(Vector3.up * verticalVelocity * Time.deltaTime);
     }
 
     void HandleMouseLook()
     {
-        // Get mouse input
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
-        // Rotate player body left/right (horizontal rotation)
         transform.Rotate(Vector3.up * mouseX);
 
-        // Rotate camera up/down (vertical rotation)
         cameraVerticalRotation -= mouseY;
         cameraVerticalRotation = Mathf.Clamp(cameraVerticalRotation, -maxLookAngle, maxLookAngle);
 

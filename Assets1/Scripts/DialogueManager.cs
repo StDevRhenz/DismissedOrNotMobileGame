@@ -17,7 +17,6 @@ public class DialogueManager : MonoBehaviour
 
     void Awake()
     {
-        // singleton pattern
         if (Instance == null)
         {
             Instance = this;
@@ -61,17 +60,14 @@ public class DialogueManager : MonoBehaviour
             dialogueText.gameObject.SetActive(true);
             dialogueText.text = "";
 
-            // Type out text
             foreach (char letter in text.ToCharArray())
             {
                 dialogueText.text += letter;
                 yield return new WaitForSeconds(typingSpeed);
             }
 
-            // Wait before hiding
             yield return new WaitForSeconds(displayDuration);
 
-            // Hide dialogue
             dialogueText.gameObject.SetActive(false);
         }
 
@@ -90,7 +86,6 @@ public class DialogueManager : MonoBehaviour
             {
                 dialogueText.text = "";
 
-                // Type out each line
                 foreach (char letter in line.ToCharArray())
                 {
                     dialogueText.text += letter;
@@ -100,7 +95,6 @@ public class DialogueManager : MonoBehaviour
                 yield return new WaitForSeconds(pauseBetweenLines);
             }
 
-            // Hide after all lines
             dialogueText.gameObject.SetActive(false);
         }
 

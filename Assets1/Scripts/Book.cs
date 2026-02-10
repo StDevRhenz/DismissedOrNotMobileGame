@@ -22,10 +22,8 @@ public class Book : MonoBehaviour
 
     void Update()
     {
-        //rotate the book
         transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
 
-        // bob up and down
         float newY = startPosition.y + Mathf.Sin(Time.time * bobSpeed) * bobHeight;
         transform.position = new Vector3(transform.position.x, newY, transform.position.z);
     }
@@ -34,7 +32,7 @@ public class Book : MonoBehaviour
     {
         if (other.CompareTag("Player") || other.GetComponent<CharacterController>() != null)
         {
-            // Show Dialogue on first book
+            // First pickup lang magti-trigger ng dialogue para di spam
             if (!firstBookCollected)
             {
                 firstBookCollected = true;
@@ -49,14 +47,12 @@ public class Book : MonoBehaviour
                 }
             }
 
-            // Find BookManager and collect
             BookManager manager = FindObjectOfType<BookManager>();
             if (manager != null)
             {
                 manager.CollectBook();
             }
 
-            // Play sound
             if (collectSound != null)
             {
                 AudioSource.PlayClipAtPoint(collectSound, transform.position);
